@@ -133,20 +133,24 @@ class _HomePageState extends State<HomePage> {
                 child: Row(
                   children: [
                     Wrap(
-                      spacing: 10,
+                      spacing: 8,
                       children: List.generate(
                         choiceList.length,
                         (index) {
                           return ChoiceChip(
-                            label: Text(choiceList[index],
-                                style: textTheme.titleSmall),
+                            label: Text(
+                              choiceList[index],
+                              style: textTheme.titleSmall,
+                            ),
                             selected: defaultChoiceIndex == index,
                             selectedColor: primaryColor,
                             onSelected: (value) {
-                              setState(() {
-                                defaultChoiceIndex =
-                                    value ? index : defaultChoiceIndex;
-                              });
+                              setState(
+                                () {
+                                  defaultChoiceIndex =
+                                      value ? index : defaultChoiceIndex;
+                                },
+                              );
                             },
                           );
                         },
