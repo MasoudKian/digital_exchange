@@ -5,10 +5,23 @@ import 'package:flutter/material.dart';
 import 'package:marquee/marquee.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   HomePage(pageViewController, {super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final PageController _pageViewController = PageController(initialPage: 0);
+
+  var defaultChoiceIndex = 0;
+
+  final List<String> choiceList = [
+    'Top MarketCaps',
+    'Top Gainers',
+    'Top Losers'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -90,13 +103,11 @@ class HomePage extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          padding: const EdgeInsets.all(15),
-                          backgroundColor: Colors.green[800]
-                        ),
-                        
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            padding: const EdgeInsets.all(15),
+                            backgroundColor: Colors.green[800]),
                         child: const Text('Buy'),
                       ),
                     ),
@@ -108,15 +119,42 @@ class HomePage extends StatelessWidget {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
-                            padding: const EdgeInsets.all(15),
-                            backgroundColor: Colors.red[900],
+                          padding: const EdgeInsets.all(15),
+                          backgroundColor: Colors.red[900],
                         ),
                         child: const Text('Sell'),
                       ),
                     ),
                   ],
                 ),
-              )
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 5, right: 5),
+                child: Row(
+                  children: [
+                    Wrap(
+                      spacing: 10,
+                      children: List.generate(
+                        choiceList.length,
+                        (index) {
+                          return ChoiceChip(
+                            label: Text(choiceList[index],
+                                style: textTheme.titleSmall),
+                            selected: defaultChoiceIndex == index,
+                            selectedColor: primaryColor,
+                            onSelected: (value) {
+                              setState(() {
+                                defaultChoiceIndex =
+                                    value ? index : defaultChoiceIndex;
+                              });
+                            },
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
