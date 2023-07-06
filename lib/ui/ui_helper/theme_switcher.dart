@@ -16,6 +16,7 @@ class ThemeSwitcher extends StatelessWidget {
         ? CupertinoIcons.moon_fill
         : CupertinoIcons.sun_max_fill);
 
+
     return IconButton(
       onPressed: () {
         themeProvider.toggleTheme();

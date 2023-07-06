@@ -19,15 +19,15 @@ class MyTheme {
   static final darkTheme = ThemeData(
     textTheme: TextTheme(
       titleLarge: GoogleFonts.ubuntu(
-          color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),
+          color: Colors.black, fontSize: 22, fontWeight: FontWeight.bold),
       bodySmall: GoogleFonts.ubuntu(color: Colors.white, fontSize: 15),
       labelSmall: GoogleFonts.ubuntu(color: Colors.white54, fontSize: 13),
-      titleSmall: GoogleFonts.ubuntu(color: Colors.black, fontSize: 12),
+      titleSmall: GoogleFonts.ubuntu(color: Colors.white, fontSize: 12),
     ),
     unselectedWidgetColor: Colors.white70,
     primaryColorLight: Colors.black,
     scaffoldBackgroundColor: Colors.grey.shade900,
-    primaryColor: Colors.blueAccent,
+    primaryColor: Colors.blueAccent[700],
     secondaryHeaderColor: Colors.white,
     iconTheme: const IconThemeData(color: Colors.black, opacity: 0.8),
   );
